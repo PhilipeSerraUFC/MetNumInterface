@@ -270,8 +270,8 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  min-height: 280px;
-  max-height: 280px;
+  min-height: 400px;
+  max-height: 400px;
   flex-shrink: 0;
 }
 
@@ -301,15 +301,15 @@ body {
 }
 
 /* Desktop - Tamanhos ajustados para telas maiores */
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
   .comparation-frame-box-list {
-    max-height: 700px;
-    height: 700px;
+    max-height: 800px;
+    height: 800px;
   }
   
   .comparation-frame-box {
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 400px;
+    max-height: 400px;
   }
   
   .comparation-frame-box table {

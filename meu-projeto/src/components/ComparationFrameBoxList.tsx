@@ -10,7 +10,7 @@ const ComparationFrameBoxList: React.FC<ComparationFrameBoxListProps> = ({ frame
   return (
     <div className="comparation-frame-box-list">
       {frames.map((frame, index) => (
-        <ComparationFrameBox key={index} frame={frame} />
+        <ComparationFrameBox key={index} frame={frame} index={index} />
       ))}
     </div>
   );

@@ -23,6 +23,7 @@ vector<string> resultToVecString (Result x){
     v.push_back (to_string(x.root));
     v.push_back (to_string(x.residual));
     v.push_back (to_string(x.error));
+    v.push_back (x.converged? "Sim" : "Não");
     v.push_back (to_string(x.interations)); 
 
     return v;
@@ -51,18 +52,18 @@ vector<vector<vector<string>>> quadro_comparativo(vector<double> a_foguetes, dou
     for(int i = 0; i < a_foguetes.size(); i++){
 
         /*A solução da equação ad - dln(d) é d = e^a, 
-        seja [A,B] o barramento, então devemos ter A <= e^a e e^B >= e^b 
+        seja [A,B] o barramento, então devemos ter A <= e^a e e^B >= e^b
         para que seja possível a convergencia
         
         
-        Portanto, usaremos o barramento [2^a,3^a]
+        Portanto, usaremos o barramento [2^a,3^a] se a > 0 e [3^a, 2^a] se a < 0
         
         No caso do Newton-Raphson, podemos utilizar o valor inicial de x0 = 2.7^a, ja que é proximo do valor de e^a
         
         */
 
-        double a_barramento = pow((double)2, a_foguetes[i]);
-        double b_barramento = pow((double)3,a_foguetes[i]);
+        double a_barramento = a_foguetes[i] < 0 ?  pow((double)3, a_foguetes[i]) : pow((double)2, a_foguetes[i]);
+        double b_barramento =  a_foguetes[i] < 0 ?  pow((double)2, a_foguetes[i]) : pow((double)3, a_foguetes[i]);
         double x0 = pow((double)2.7, a_foguetes[i]);
 
 
@@ -78,10 +79,10 @@ vector<vector<vector<string>>> quadro_comparativo(vector<double> a_foguetes, dou
         */
 
         vector<vector<string>> comp_board = {};
-        vector<string> vec_text = {"a" + to_string(i),  "Dados Iniciais", "x", "f(x)", "Erro", "Numero de Interações"};
+        vector<string> vec_text = {"a = " + to_string(a_foguetes[i]),  "Dados Iniciais", "x", "f(x)", "Erro", "Convergiu", "Numero de Interações"};
         vector<string> vec_bissection = {"Bissecção", "[" + to_string(a_barramento)+ "," + to_string(b_barramento) + "]"};
         vector<string> vec_false_pos = {"Posição Falsa",  "[" + to_string(a_barramento) + "," + to_string(b_barramento) + "]"};
-        vector<string> vec_new_raph = {"Newton Raphson", "x0 = " + to_string(x0)};
+        vector<string> vec_new_raph = {"Newton Raphson", "x_0 = " + to_string(x0)};
 
         vector<string> bissection_result = resultToVecString(bisection(fa(a_foguetes[i]), a_barramento, b_barramento, error, max_iter));
         vector<string> false_pos_result = resultToVecString(false_position(fa(a_foguetes[i]), a_barramento, b_barramento, error, max_iter));
