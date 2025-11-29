@@ -205,9 +205,7 @@ function App() {
             <StartButton/>
             <EpsolonBox value={epsolon} onChange={setEpsolon} />
             <MaxIterBox value={max_iter} onChange={setMaxIter} />
-            <TitleBox onStart={handleStart} isLoading={isLoading}>
-              {isLoading ? 'Processando...' : 'Start'}
-            </TitleBox>
+            <TitleBox />
           </div>
 
           {/* Lista de comparações abaixo dos controles */}

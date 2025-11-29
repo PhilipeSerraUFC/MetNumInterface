@@ -14,7 +14,7 @@ const EpsolonBox: React.FC<EpsolonBoxProps> = ({ value, onChange }) => {
     const [mantissaStr, exponentStr] = expString.split('e');
     
     return {
-      mantissa: parseFloat(mantissaStr),
+      mantissa: parseInt(mantissaStr),
       exponent: parseInt(exponentStr, 10)
     };
   };
@@ -24,11 +24,13 @@ const EpsolonBox: React.FC<EpsolonBoxProps> = ({ value, onChange }) => {
   const [exponent, setExponent] = useState(scientific.exponent);
 
   // Atualiza quando o valor externo muda
+  /*
   useEffect(() => {
     const scientific = valueToScientific(value);
     setMantissa(scientific.mantissa);
     setExponent(scientific.exponent);
   }, [value]);
+  */
 
   // Atualiza o valor quando mantissa ou expoente mudam
   const updateValue = (newMantissa: number, newExponent: number) => {
@@ -37,7 +39,7 @@ const EpsolonBox: React.FC<EpsolonBoxProps> = ({ value, onChange }) => {
   };
 
   const handleMantissaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMantissa = parseFloat(e.target.value) || 0;
+    const newMantissa = parseInt(e.target.value) || 0;
     setMantissa(newMantissa);
     updateValue(newMantissa, exponent);
   };
