@@ -214,16 +214,18 @@ function App() {
           <ComparationFrameBoxList frames={comparationFrameList} />
           
 
+          {/* Gráficos */}
 
         </div>
-        
-        </div>
-                  {/* Gráficos */}
+            <div className= "graphs-section">
           <ConvergenceChart a_foguetes={a_foguetes} comparationFrameList={comparationFrameList}/>      
           <FalsePositionIterationsChart a_foguetes={a_foguetes} comparationFrameList={comparationFrameList} />
           <BisectionIterationsChart a_foguetes={a_foguetes} comparationFrameList={comparationFrameList} />
           <NewtonRaphsonIterationsChart a_foguetes={a_foguetes} comparationFrameList={comparationFrameList} />
-          
+          </div>
+        </div>
+
+
     </div>
   );
 }

@@ -24,8 +24,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: clamp(20px, 4vw, 40px);
-  max-width: 1400px;
+  max-width: '120%';
+  max-width: '120%';
   margin: 0 auto;
+}
+
+.graphs-section {
+  width: '1000px';
 }
 
 .left-section {
@@ -303,8 +308,8 @@ body {
 /* Desktop - Tamanhos ajustados para telas maiores */
 @media (min-width: 1000px) {
   .comparation-frame-box-list {
-    max-height: 800px;
-    height: 800px;
+    max-height: 2000px;
+    height: 2000px;
   }
   
   .comparation-frame-box {

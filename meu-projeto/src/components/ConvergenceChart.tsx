@@ -120,7 +120,7 @@ const ConvergenceChart: React.FC<ConvergenceChartProps> = ({
   };
 
   return (
-    <div style={{ width: '100%', height: '500px' }}>
+    <div style={{ width: '800px', height: '500px' }}>
       <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>
         Valor médio do deslocamento pelo parâmetro a
       </h3>
