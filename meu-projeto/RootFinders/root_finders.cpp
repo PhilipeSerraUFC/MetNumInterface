@@ -47,6 +47,7 @@ Result bisection(const std::function<double(double)>& f, double a, double b, dou
 
 Result false_position(const std::function<double(double)>& f, double a, double b, double epsilon, int max_inter, bool verbose){
     double x;
+    double x0 = a;
     // Checagem se o intervalo fornecido é válido
     if(f(a) * f(b) >= 0){
         throw std::invalid_argument("Intervalo inválido: f(a) e f(b) possuem o mesmo sinal!");
@@ -61,9 +62,7 @@ Result false_position(const std::function<double(double)>& f, double a, double b
             std::cout << "x = " << x << "\n";
             std::cout << "f(x) = " << f(x) << "\n\n";
         }
-        if((b - a) < epsilon){
-            return {x, k, true, std::abs(f(x)), std::abs(b-a)};
-        }
+
         // Escolha dos extremos do intervalo da próxima interação
         if(f(x) * f(a) > 0){
             // se f(x) e f(a) possuem o mesmo sinal
@@ -71,6 +70,15 @@ Result false_position(const std::function<double(double)>& f, double a, double b
         }else{
             b = x;
         }
+
+        //Criterio de parada baseado na diferença entre o resultado anterior e o resultado atual
+        if(std::abs(x - x0) < epsilon){
+            return {x, k, true, std::abs(f(x)), std::abs(x-x0)};
+        }
+        //Mas ele não é justo, o valor real pode estar fora deste intervalo de erro.... pode?
+
+        x0 = x;
+        
     }
     return {x, max_inter, false, std::abs(f(x)), std::abs(b-a)};
 }

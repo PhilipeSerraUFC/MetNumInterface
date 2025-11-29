@@ -84,9 +84,9 @@ vector<vector<vector<string>>> quadro_comparativo(vector<double> a_foguetes, dou
         vector<string> vec_false_pos = {"Posição Falsa",  "[" + to_string(a_barramento) + "," + to_string(b_barramento) + "]"};
         vector<string> vec_new_raph = {"Newton Raphson", "x_0 = " + to_string(x0)};
 
-        vector<string> bissection_result = resultToVecString(bisection(fa(a_foguetes[i]), a_barramento, b_barramento, error, max_iter));
-        vector<string> false_pos_result = resultToVecString(false_position(fa(a_foguetes[i]), a_barramento, b_barramento, error, max_iter));
-        vector<string> new_raph_result = resultToVecString(newton_raphson(fa(a_foguetes[i]), dfa(1), x0 , error, max_iter));
+        vector<string> bissection_result = resultToVecString(bisection(fa(a_foguetes[i]), a_barramento, b_barramento, error, max_iter, true));
+        vector<string> false_pos_result = resultToVecString(false_position(fa(a_foguetes[i]), a_barramento, b_barramento, error, max_iter, true));
+        vector<string> new_raph_result = resultToVecString(newton_raphson(fa(a_foguetes[i]), dfa(a_foguetes[i]), x0 , error, max_iter));
 
         vec_bissection.insert(vec_bissection.end(), bissection_result.begin(), bissection_result.end());
         vec_false_pos.insert(vec_false_pos.end(), false_pos_result.begin(), false_pos_result.end());
