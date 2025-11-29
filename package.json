@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "react-icons": "^5.5.0",
-    "recharts": "^3.5.1",
-    "react-katex": "^3.0.0",
-    "vite": "7.2.4"
-    
-  }
-}

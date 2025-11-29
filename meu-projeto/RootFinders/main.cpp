@@ -115,25 +115,3 @@ EMSCRIPTEN_BINDINGS(metodos_numericos) {
 
     emscripten::function("comparative_boards", &quadro_comparativo);
 }
-
-
-/*
-int main(){
-    vector<double> u = {1, 1.4, 8};
-    vector<vector<vector<string>>> v = quadro_comparativo(u); 
-
-    for(int i = 0; i < v.size(); i ++){
-        vector<vector<string>> vi = v[i];
-        for(int j = 0; j < vi.size(); j ++){
-            vector<string> vij = vi[j];
-            for(int k = 0; k < vij.size() ; k ++){
-                //cout << i << j << k << endl;
-                cout << v[i][j][k] << endl;
-            }
-        }
-    }
-
-
-    return 0;
-}
-*/
