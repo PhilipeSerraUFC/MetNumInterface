@@ -64,6 +64,8 @@ vector<vector<vector<string>>> quadro_comparativo(vector<double> a_foguetes, dou
 
         double a_barramento = a_foguetes[i] < 0 ?  pow((double)3, a_foguetes[i]) : pow((double)2, a_foguetes[i]);
         double b_barramento =  a_foguetes[i] < 0 ?  pow((double)2, a_foguetes[i]) : pow((double)3, a_foguetes[i]);
+        a_barramento = a_foguetes[i] == 0 ?  0.98 : a_barramento;
+        b_barramento =  a_foguetes[i] == 0 ?  1.02 : b_barramento;
         double x0 = pow((double)2.7, a_foguetes[i]);
 
 

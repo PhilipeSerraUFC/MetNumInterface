@@ -77,8 +77,8 @@ Result false_position(const std::function<double(double)>& f, double a, double b
 
         //Criterio de parada baseado na diferença entre o resultado anterior e o resultado atual
 
-        if(std::abs(x-x0) < epsilon){
-            return {x, k, true, std::abs(f(x)), std::abs(x-x0)};
+        if(std::abs(f(x)) < epsilon){
+            return {x, k, true, std::abs(f(x)), std::abs(f(x))};
         }
         //Mas ele não é justo, o valor real pode estar fora deste intervalo de erro.... pode?
 
