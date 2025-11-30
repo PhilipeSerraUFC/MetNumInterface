@@ -20,7 +20,7 @@ Result bisection(const std::function<double(double)>& f, double a, double b, dou
         int min_inter = std::ceil((std::log10(b-a) - std::log10(epsilon))/std::log10(2));
         std::cout << "Dado o intervalo I = [" << a << "," << b << "], precisão e = " << epsilon << ", o método irá convergir depois de " << min_inter << " passos de iteração.\n";  
     } 
-    for(int k = 0; k <= max_inter; k++){
+    for(int k = 1; k <= max_inter; k++){
         x = 0.5 * (a+b);
         if(verbose){
             std::cout << "========== Iteração " << k << " ==========\n";
@@ -52,7 +52,7 @@ Result false_position(const std::function<double(double)>& f, double a, double b
     if(f(a) * f(b) >= 0){
         throw std::invalid_argument("Intervalo inválido: f(a) e f(b) possuem o mesmo sinal!");
     }
-    for(int k = 0; k <= max_inter; k++){
+    for(int k = 1; k <= max_inter; k++){
         x = (a*f(b) - b*f(a))/(f(b) - f(a));
         if(verbose){
             std::cout << "========== Iteração " << k << " ==========\n";
@@ -108,7 +108,7 @@ Result fixed_point(const std::function<double(double)>& phi, double x0, double e
 
 Result newton_raphson(const std::function<double(double)>& f, const std::function<double(double)>& df, double x0, double epsilon, int max_inter, bool verbose){
     double x;
-    for(int k = 0; k <= max_inter; k++){
+    for(int k = 1; k <= max_inter; k++){
         x = x0 - f(x0)/df(x0); // xk = xk-1 - f(xk-1)/f'(xk-1)
         if(verbose){
             std::cout << "========== Iteração " << k << " ==========\n";

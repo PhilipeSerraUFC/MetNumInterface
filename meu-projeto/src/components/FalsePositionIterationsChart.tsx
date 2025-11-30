@@ -50,7 +50,7 @@ const FalsePositionIterationsChart: React.FC<FalsePositionIterationsChartProps> 
   const processData = () => {
     const convergedData: DataPoint[] = [];
     const notConvergedData: DataPoint[] = [];
-    const methodColumn = 1; // Posição Falsa
+    const methodColumn = 2; // Posição Falsa
 
     for (let i = 0; i < a_foguetes.length && i < comparationFrameList.length; i++) {
       const a = a_foguetes[i];
