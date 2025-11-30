@@ -12,3 +12,17 @@ source ~/.bashrc
 
 
 nvm install --lts
+
+module.exports = {
+  makers: [
+    {
+      name: '@electron-forge/maker-deb',
+      config: {
+        options: {
+          maintainer: 'Seu Nome',
+          homepage: 'https://seusite.com'
+        }
+      }
+    }
+  ]
+};
