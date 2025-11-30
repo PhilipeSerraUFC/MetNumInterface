@@ -1,17 +1,11 @@
-import { contextBridge, ipcRenderer } from "electron";
-contextBridge.exposeInMainWorld("electron", {
+import { contextBridge as s, ipcRenderer as i } from "electron";
+s.exposeInMainWorld("electron", {
   // Exemplo: enviar mensagem ao main process
-  send: (channel, data) => {
-    const validChannels = ["toMain"];
-    if (validChannels.includes(channel)) {
-      ipcRenderer.send(channel, data);
-    }
+  send: (e, n) => {
+    ["toMain"].includes(e) && i.send(e, n);
   },
   // Exemplo: receber mensagem do main process
-  receive: (channel, func) => {
-    const validChannels = ["fromMain"];
-    if (validChannels.includes(channel)) {
-      ipcRenderer.on(channel, (event, ...args) => func(...args));
-    }
+  receive: (e, n) => {
+    ["fromMain"].includes(e) && i.on(e, (l, ...o) => n(...o));
   }
 });
